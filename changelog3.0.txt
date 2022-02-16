@@ -1,0 +1,104 @@
+                         CHANGELOG FOR PARTHENOPE
+
+--------------------
+- March 10th, 2021   -
+--------------------
+PArthENoPE: version 3.0
+
+---IMPROVEMENTS
+
+- Update of the physics implemented in the Fortran code, in particular
+the expression of the new 2H(p,gamma)3He, 2H(d,n)3He, and 2H(d,p)3H
+reaction rates.
+
+- The user can now choose different determinations found in literature
+for the 2H(p,gamma)3He, 2H(d,n)3He, and 2H(d,p)3H reaction rates.
+
+- Improvements in the GUI functionalities, in particular the
+generation of parallel runs exploiting all the available CPUs and new
+plotting functions for one- and two-dimensional plots based on the data
+produced by the user.
+
+---BUGS FIXED
+
+- The length of the variables NAMEFILE1, NAMEFILE2, NAMEFILE3, VALC,
+INPUTF, has been enlarged to 500 characters to handle errors connected
+to long filenames in connection with the use of the GUI.
+
+- Fixed bugs in the printed output, due to the fact that the values of
+the output quantities were attributed to the previous time step.
+
+
+--------------------
+- Oct 22nd, 2018   -
+--------------------
+PArthENoPE: version 2.0
+
+---IMPROVEMENTS
+
+- NAG libraries replaced with ODEPACK libraries, publicly available.
+
+- Weak rates are now calculated in a separate routine, WRATE, called 
+by the routine RATE where all reaction rates are evaluated.
+
+- The common OUTVAR now contains free locations (from 4 to 20) for 
+user-defined output variables.
+
+- A Python GUI for choosing interactively the initial parameters and 
+running configuration is included in the package.
+
+
+
+--------------------
+- Jan 27th, 2017   -
+--------------------
+PArthENoPE: version 1.10
+
+---IMPROVEMENTS
+
+- Updated rate and uncertainty are used for the reaction H2(p,g)He3, 
+based on the  astrophysical factor given in E.G. Adelberger et al., 
+Rev. Mod. Phys. 83 (2011) 195.
+- The default values of the physical parameters were updated to the 
+most recent experimental results (both in the input card and in the
+initialization routines) and the range for the reliable values of 
+the neutron lifetime was changed to a 5 sigma range around the 
+present experimental value quoted in the PDG, C. Patrignani et al. 
+(Particle Data Group), Chin. Phys. C, 40, 100001 (2016).
+
+---BUGS FIXED
+
+- Few typos and errors are contained in the Appendix A of the 
+PArthENoPE reference paper [Pisanti et al, Comput. Phys. Commun. 
+178 (2008) 956]. For details see the Parthenope_appendix.pdf in 
+PArthENoPE webpage. We are pleased to thank Ahmad Borzou for 
+pointing out these typos and mistakes. Few lines in the subroutine 
+FCN has been changed accordingly. However the impact of these 
+changes is completely irrelevant and all nuclear yields do not 
+change within the numerical error.
+- In the subroutine FCN the expression of the variable nbh (whose
+values are only printed in the output files) was corrected.
+- In the subroutine THERMO, the formulas for RHONH and NAUX have
+been corrected to double precision.
+- In the subroutine OUTEVOL, 273.97 has been corrected to 273.49 
+in the instruction for writing the current value of Omega_B h^2 
+on screen.
+- The length of the variables NAMEFILE1, NAMEFILE2, VALC, INPUTF, 
+has been enlarged to 50 characters to handle errors connected to 
+long filenames.
+- In the subroutines OUTEVOL and OUTEND, instructions to write in
+the nuclides.out file have been corrected in such a way to be 
+executed only when requested by the user.
+- In the subroutine OUTEVOL, a bug has been corrected that implied 
+that, in the card mode, data was printed in nuclides.out even if 
+user had chosen not to print them in the external card.
+- Obsolescent or invalid forms for the OPEN statements have been 
+corrected.
+- The formats of data have been changed wherever this was needed 
+for correct printing.
+
+
+--------------------
+- May 2nd, 2007    -
+--------------------
+First Release of PArthENoPE: version 1.00

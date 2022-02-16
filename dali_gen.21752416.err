@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+Traceback (most recent call last):
+  File "DALIGenerateDataClass.py", line 392, in <module>
+    stop
+NameError: name 'stop' is not defined
+srun: error: b008: tasks 4-7: Exited with exit code 1
+srun: error: b007: tasks 0-3: Exited with exit code 1

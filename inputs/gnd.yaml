@@ -1,0 +1,11 @@
+likelihood:
+  GND: 
+    python_path: likelihoods/GND
+sampler:
+  mcmc:
+    max_samples: 10000 #.inf
+    max_tries: 1000d
+
+debug: True
+output: chains/gnd/gnd
+packages_path: '/users/stevensonb/Research/Hubble/packages/'

@@ -1,0 +1,8 @@
+__pycache__/
+build/
+chains/
+dist/
+packages/
+runs/
+parthenopegui/
+parthenopegui.egg-info/
