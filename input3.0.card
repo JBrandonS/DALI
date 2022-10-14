@@ -5,11 +5,11 @@ XIE      0.                                  nu_e chemical potential
 XIX      0.                                  nu_x chemical potential
 RHOLMBD  0.                                  value of cosmological constant at the BBN epoch
 OVERWRITE F                                  option for overwriting the output files
-FOLLOW  T                                    option for following the evolution on the screen
+FOLLOW  F                                    option for following the evolution on the screen
 ETA10  6.13832                               value of eta10
-OUTPUT   T  4  1 2 3 6                       options for customizing the output
+OUTPUT   F  4  1 2 3 6                       options for customizing the output
 NETWORK  26                                  number of nuclides in the network
-FILES  parthenope3.0.out nuclides3.0.out info3.0.out    names of the three output files
+FILES  _parthenope3.0.out _nuclides3.0.out _info3.0.out    names of the three output files
 * The following are examples of the use of the keyword RATES
 *RATES    1  (20 2 2.)
 *RATES    3  (20 2 0.) (28 2 0.) (29 2 0.)

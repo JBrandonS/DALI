@@ -11,17 +11,17 @@ CONDAENV ?=
 FOPTS=-O3
 
 OBJECTS=parthenope3.0.f main3.0.f dlsode.f odepack1-parthenope3.0.f odepack2-parthenope3.0.f addon3.0.f
-EXENAME=parthenope3.0
+EXENAME=parthenope3.0.mod
 
 default: all
 
-all: parthenope3.0
+all: parthenope3.0.mod
 
-parthenope3.0: $(OBJECTS)
+parthenope3.0.mod: $(OBJECTS)
 	$(F90) $(OBJECTS) -o $(EXENAME) $(FLIBS) $(FOPTS)
 
 clean:
-	rm parthenope3.0
+	rm parthenope3.0.mod
 
 installconda:
 	bash conda.sh $(CONDAENV)

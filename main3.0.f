@@ -197,7 +197,7 @@ C-----Get an input line
 	    stop
 	  endif
 	  eta10=valr
-	  if (eta10.lt.2.d0 .or. eta10.gt.9.d0) then
+	  if (eta10.lt.0.d0 .or. eta10.gt.90.d0) then
 	    write(*,99) keyword
 	    stop
 	  endif
@@ -212,7 +212,7 @@ C-----Get an input line
 	    stop
 	  endif
 	  dnnu0=valr
-	  if (dnnu0.lt.-3.d0 .or. dnnu0.gt.3.d0) then
+	  if (dnnu0.lt.-30.d0 .or. dnnu0.gt.30.d0) then
 	    write(*,99) keyword
 	    stop
 	  endif
@@ -227,7 +227,7 @@ C-----Get an input line
 	    stop
 	  endif
 	  tau0=valr
-	  if (tau0.lt.875.2d0 .or. tau0.gt.885.2d0) then
+	  if (tau0.lt.175.2d0 .or. tau0.gt.1085.2d0) then
 	    write(*,99) keyword
 	    stop
 	  endif

@@ -1,7 +1,5 @@
-from os import remove
 from cobaya.likelihood import Likelihood
 from cobaya.log import LoggedError
-import sys
 import numpy as np
 import pickle
 

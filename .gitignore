@@ -6,3 +6,6 @@ packages/
 runs/
 parthenopegui/
 parthenopegui.egg-info/
+
+*.pkl
+*.out
