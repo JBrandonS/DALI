@@ -1,5 +1,6 @@
 from cobaya.likelihood import Likelihood
-from cobaya.log import LoggedError
+import cobaya.log as log
+from logging import DEBUG
 import numpy as np
 import pickle
 
@@ -11,11 +12,12 @@ class dali(Likelihood):
     remove: list
 
     def initialize(self):
+        self.logger = log.get_logger('dali')
         try:
             with open(self.file, 'rb') as file:
                 data = pickle.load(file)
         except Exception as err:
-            raise LoggedError(self.log, "Error reading file %s, %s", self.file, err)
+            raise log.LoggedError(self.logger, "Error reading file %s, %s", self.file, err)
 
         self.cosmoFid =  data['cosmoFid']
         self.fisher = data['fisherGaussian'][self.experiment][self.spectrum]
@@ -34,7 +36,7 @@ class dali(Likelihood):
                         self.dali3 = np.delete(np.delete(np.delete(self.dali3, i, 0), i, 1), i, 2)
                         self.dali4 = np.delete(np.delete(np.delete(np.delete(self.dali4, i, 0), i, 1), i, 2), i, 3)
                 except ValueError:
-                    raise LoggedError(self.log, "Could not find parameter %s to remove", k)
+                    raise log.LoggedError(self.logger, "Could not find parameter %s to remove", k)
 
         return super().initialize()
     
@@ -42,11 +44,14 @@ class dali(Likelihood):
         return [i for i in self.cosmoFid.keys() if i not in self.remove]
 
     def logp(self, _derived=None, **params_values):
-        divVec = np.array([params_values[k] - v for k,v in self.cosmoFid.items()])
+        divVec = np.array([params_values[k] - v for k,v in self.cosmoFid.items()]) # should this be abundances??
         logLike = -0.5*np.einsum('ij,i,j', self.fisher, divVec, divVec)
         if self.use_dali:
             logLike += -0.5*np.einsum('ijk,i,j,k', self.dali3, divVec, divVec, divVec)
             logLike += -0.125*np.einsum('ijkl,i,j,k,l', self.dali4, divVec, divVec, divVec, divVec)
+            
+        self.logger.log(DEBUG, f'params: {params_values} fids: {self.cosmoFid}')
+        self.logger.log(DEBUG, f'divVec: {divVec} logLike: {logLike}')
         return logLike
 
 
