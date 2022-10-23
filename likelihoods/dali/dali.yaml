@@ -14,3 +14,5 @@ experiment: 0
 
 # list of keys which are to be removed
 remove: []
+
+tau_prior: 0.5

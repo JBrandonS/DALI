@@ -45,7 +45,7 @@ class Pyrthenope(object):
         if card_mod is not None:
             self.modify_card(card_mod, True)
 
-        self.parth_exe = parthenope_path / 'parthenope3.0'
+        self.parth_exe = parthenope_path / 'parthenope3.0.mod'
         atexit.register(self.exit)
 
     def exit(self):
@@ -90,7 +90,7 @@ class Pyrthenope(object):
                         stdout=subprocess.PIPE)
         
         if cmd.stdout is not None:
-            #Using NOTSET here as a trace level
+            #Using NOTSET here as a trace level since this output is very verbose
             self.logger.log(NOTSET, cmd.stdout)
         if cmd.stderr is not None:
             self.logger.log(ERROR, cmd.stderr)

@@ -10,6 +10,7 @@ class dali(Likelihood):
     spectrum: str
     experiment: int
     remove: list
+    tau_prior: float
 
     def initialize(self):
         self.logger = log.get_logger('dali')
@@ -21,6 +22,8 @@ class dali(Likelihood):
 
         self.cosmoFid =  data['cosmoFid']
         self.fisher = data['fisherGaussian'][self.experiment][self.spectrum]
+        self.fisher[2,2] += 1/self.tau_prior**2
+        
         if self.use_dali:
             self.dali3 = data['DALI3Gaussian'][self.experiment][self.spectrum]
             self.dali4 = data['DALI4Gaussian'][self.experiment][self.spectrum]

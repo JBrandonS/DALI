@@ -14,6 +14,7 @@ latex_trans = {
     'theta_s':r'\theta_\mathrm{s}',
     'tau':r'\tau_n\;[s]',
     'mnu':r'm_\mathrm{\nu}',
+    'eta10':r'\eta_{10}',
 }
 
 def add_priors(yaml_file, data_file, tau):
@@ -23,7 +24,8 @@ def add_priors(yaml_file, data_file, tau):
 
     fid = data['cosmoFid']
     
-    errors = {'omega_b_h2': 0.00022, 'N_nu': 0.36, 'tau': 0.5}
+    #errors = {'omega_b_h2': 0.00022, 'N_nu': 0.36, 'tau': 0.5}
+    errors = {'eta10': 273*0.00022, 'N_nu': 0.36, 'tau': 0.5}
     widths = 5
 
     for i, (k, v) in enumerate(fid.items()):
