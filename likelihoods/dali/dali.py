@@ -22,24 +22,13 @@ class dali(Likelihood):
 
         self.cosmoFid =  data['cosmoFid']
         self.fisher = data['fisherGaussian'][self.experiment][self.spectrum]
+        self.logger.log(DEBUG, f'Fisher before: {self.fisher}')
         self.fisher[2,2] += 1/self.tau_prior**2
+        self.logger.log(DEBUG, f'Fisher after: {self.fisher}')
         
         if self.use_dali:
             self.dali3 = data['DALI3Gaussian'][self.experiment][self.spectrum]
             self.dali4 = data['DALI4Gaussian'][self.experiment][self.spectrum]
-
-        # removes requested parameters from dali and fisher
-        if self.remove:
-            for k in self.remove:
-                try:
-                    i = list(self.cosmoFid.keys()).index(k)
-                    self.cosmoFid.pop(k)
-                    self.fisher = np.delete(np.delete(self.fisher, i, 0), i, 1)
-                    if self.use_dali:
-                        self.dali3 = np.delete(np.delete(np.delete(self.dali3, i, 0), i, 1), i, 2)
-                        self.dali4 = np.delete(np.delete(np.delete(np.delete(self.dali4, i, 0), i, 1), i, 2), i, 3)
-                except ValueError:
-                    raise log.LoggedError(self.logger, "Could not find parameter %s to remove", k)
 
         return super().initialize()
     

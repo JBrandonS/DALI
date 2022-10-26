@@ -3,7 +3,6 @@ import pickle
 import numpy as np
 import json
 import yaml
-import math
 
 latex_trans = {
     'omega_c_h2':r'\Omega_\mathrm{cdm}h^2', 
@@ -15,20 +14,25 @@ latex_trans = {
     'theta_s':r'\theta_\mathrm{s}',
     'tau':r'\tau_n\;[s]',
     'mnu':r'm_\mathrm{\nu}',
-    'eta10':r'\eta_{10}',
 }
 
-def add_priors(yaml_file, data_file, tau_prior):
+def add_priors(yaml_file, data_file, tau):
     params = {}
     with open(data_file, 'rb') as f:
         data = pickle.load(f)
 
     fid = data['cosmoFid']
-    errors = {'eta10': 3, 'N_nu': 3, 'tau': 200}
 
-    for k, v in fid.items():
-        val = {'ref': v, 'latex': latex_trans.get(k, k), 'prior': {'min': max(v-errors[k],0), 'max':v+errors[k]}}
+    errors = {'omega_b_h2': 0.00015, 'N_nu': 0.36, 'tau': float(tau)}
+    widths = 5
+    
+    print(errors)
+
+    for i, (k, v) in enumerate(fid.items()):
+        val = {'ref': v, 'latex': latex_trans.get(k, k), 'prior': {'min': v-widths*errors[k], 'max':v+widths*errors[k]}}
         params.update({k: val})
+
+    # params['omega_b_h2']['prior']['min'] = max(0., params['omega_b_h2']['prior']['min'])
 
     with open(yaml_file, 'r') as f:
         idata = yaml.safe_load(f)
@@ -42,5 +46,5 @@ def add_priors(yaml_file, data_file, tau_prior):
         yaml.dump(idata, f, default_flow_style=False)
 
 print('...Finding params')
-add_priors(sys.argv[1], sys.argv[2], float(sys.argv[3]))
+add_priors(sys.argv[1], sys.argv[2], sys.argv[3])
 print('...done')

@@ -8,4 +8,4 @@ obs_fid_errors:
   'Y_p': [0.246854, 0.0026]     # https://arxiv.org/abs/1904.01594 8 26 22
   'tau': [879.4, 0.5]          #pdg       
 
-parth_path: /users/stevensonb/Research/DALI
+parth_path: /users/stevensonb/Research/DALI/parth
