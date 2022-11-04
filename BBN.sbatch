@@ -1,15 +1,17 @@
 #!/bin/bash
-#SBATCH --job-name=BBN
+
+#SBATCH --job-name=BBN_paper3
 #SBATCH --output=chains/slurmd/%x.%j.out
 #SBATCH --error=chains/slurmd/%x.%j.err
 #SBATCH --partition=standard-mem-s,standard-mem-m,standard-mem-l
-#SBATCH --ntasks=36
-#SBATCH --mem=32G  # per node
+#SBATCH --nodes=1
+#SBATCH --ntasks=32
+#SBATCH --mem=64G  # per node
 #SBATCH --cpus-per-task=1
-##SBATCH --array=[0,1,5,10,15,30]
-#SBATCH --array=[0]
+#SBATCH --array=[0,1,5,10,15,30]
+##SBATCH --array=[0]
 
-DATA_FILE="data_files/BBN_small.pkl"
+DATA_FILE="data_files/BBN_paper3.pkl"
 BASE_YAML="inputs/exact.yaml"
 
 OUTPUT_BASE="/users/stevensonb/scratch/tmp/chains"
@@ -30,7 +32,7 @@ conda activate cmb-s4
 mkdir -p "$OUTPUT_DIR" "$YAML_DIR" "$LOG_DIR"
 
 if [[ $SLURM_ARRAY_TASK_ID -eq 0 ]]; then
-    tau=0.5
+    tau=0.6
 else 
     tau=$SLURM_ARRAY_TASK_ID
 fi

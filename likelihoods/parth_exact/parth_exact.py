@@ -13,6 +13,7 @@ class parth_exact(Likelihood):
     obs_fid_errors: dict
 
     def initialize(self):
+        super().initialize()
         self.logger = log.get_logger('parth_exact')
         self.nope = Pyrthenope(parthenope_path=Path(self.parth_path))
         
@@ -21,14 +22,9 @@ class parth_exact(Likelihood):
             self.cosmoFid = data['cosmoFid']
             
         self.obs_fid_errors['tau'][1] = self.tau_sigma
-            
-        return super().initialize()
     
     def get_requirements(self):
         return list(self.cosmoFid.keys())
-    
-    # def omega_to_eta10(self, omega: float, yp = 0.2449, t0 = 2.7255):
-    #     return 273.279 * omega / (1 - 0.007125 * yp) * (2.7255 / t0)**3
 
     def logp(self, _derived=None, **kwargs):        
         self.nope.reset_card()
@@ -44,14 +40,13 @@ class parth_exact(Likelihood):
             else:
                 raise RuntimeError(f'Got unkown parameter {k} with value {v}')
                 
-        self.logger.log(DEBUG, f'running card: \n{self.nope.card}')
         point = self.nope.run()
         self.logger.log(DEBUG, f'point: \n{point}')
         
         chi2 = 0
         for k,v in self.obs_fid_errors.items():
-            self.logger.log(DEBUG, f'key: {k}, (fid): {v[0]}, point: {point[k].values[0]}, dchi2:{(np.float64(point[k].values[0]) - np.float64(v[0]))**2}')
-            chi2 += (np.float64(point[k].values[0]) - np.float64(v[0]))**2 / (np.float64(v[1])**2)
+            self.logger.log(DEBUG, f'key: {k}, (fid): {v[0]}, point: {point[k].values[0]}, dchi2:{(point[k].values[0] - v[0])**2}')
+            chi2 += (point[k].values[0] - v[0])**2 / (v[1]**2)
         return -chi2/2
 
 

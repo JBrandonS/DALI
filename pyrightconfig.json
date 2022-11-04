@@ -1,0 +1,24 @@
+{
+    "include": [
+      "likelihoods"
+    ],
+    
+    "exclude": [
+      "**/node_modules",
+      "**/__pycache__",
+      ".git",
+      "chains",
+      "inputs",
+      "parth",
+      "packages",
+      "old"
+    ],
+
+    "venv": "cmb-s4",
+  
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+  
+    "pythonVersion": "3.8",
+    "pythonPlatform": "Linux",
+  }

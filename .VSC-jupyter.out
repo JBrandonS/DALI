@@ -1,0 +1,21 @@
+[I 2022-11-04 09:35:51.883 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-11-04 09:35:51.894 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-11-04 09:35:52.296 LabApp] JupyterLab extension loaded from /users/stevensonb/.conda/envs/cmb-s4/lib/python3.8/site-packages/jupyterlab
+[I 2022-11-04 09:35:52.296 LabApp] JupyterLab application directory is /users/stevensonb/.conda/envs/cmb-s4/share/jupyter/lab
+[I 2022-11-04 09:35:52.300 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-11-04 09:35:56.712 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-11-04 09:35:56.713 ServerApp] Serving notebooks from local directory: /users/stevensonb/Research/DALI
+[I 2022-11-04 09:35:56.713 ServerApp] Jupyter Server 1.13.5 is running at:
+[I 2022-11-04 09:35:56.713 ServerApp] http://b117:8888/?token=790f3e292066cd6f60cd065bf2e231d73a42c11083bc35ce
+[I 2022-11-04 09:35:56.713 ServerApp]  or http://127.0.0.1:8888/?token=790f3e292066cd6f60cd065bf2e231d73a42c11083bc35ce
+[I 2022-11-04 09:35:56.713 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2022-11-04 09:35:56.747 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///users/stevensonb/.local/share/jupyter/runtime/jpserver-14427-open.html
+    Or copy and paste one of these URLs:
+        http://b117:8888/?token=790f3e292066cd6f60cd065bf2e231d73a42c11083bc35ce
+     or http://127.0.0.1:8888/?token=790f3e292066cd6f60cd065bf2e231d73a42c11083bc35ce
+[I 2022-11-04 09:36:12.381 ServerApp] Creating new notebook in 
+[I 2022-11-04 09:36:12.589 ServerApp] Kernel started: d73476a2-467b-4a20-b4aa-0609325c72cb
+[W 2022-11-04 09:36:12.609 ServerApp] delete /BBN_DALI_Plotter-jvsc-a306dddd-643f-4fc3-b81f-cd337047ad54e0abae40-e954-4eb0-8197-ec7bff8eab80.ipynb

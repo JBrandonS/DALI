@@ -4,4 +4,7 @@ chains/
 packages/
 data_files/
 parth/
+old/
+
 tmp_clean.sh
+*.pdf

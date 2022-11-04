@@ -7,7 +7,7 @@ sampler:
   mcmc:
     oversample_power: 0.8
     proposal_scale: 1.5
-    Rminus1_stop: 0.05
+    Rminus1_stop: 0.005
     max_tries: 1000
     Rminus1_cl_stop: 0.2
 

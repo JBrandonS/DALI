@@ -21,7 +21,8 @@ class Pyrthenope(object):
         https://arxiv.org/pdf/2103.05027.pdf for the current version, but mostly talks about the GUI
     """
     
-    def __init__(self, card_mod = None, parthenope_path: Path = Path.cwd()) -> None:
+    def __init__(self, card_mod = None, parthenope_path: Path = Path.cwd() / 'parth') -> None:
+        self.parth_exe = parthenope_path / Path('parthenope3.0.mod')
         self._tmpDir = tempfile.TemporaryDirectory(dir='/users/stevensonb/scratch/tmp/parth/')
         self.tmpPath = Path(self._tmpDir.name)
         self.logger = log.get_logger('pyrthenope')
@@ -45,10 +46,7 @@ class Pyrthenope(object):
         if card_mod is not None:
             self.modify_card(card_mod, True)
 
-        self.parth_exe = parthenope_path / 'parthenope3.0.mod'
-        atexit.register(self.exit)
-
-    def exit(self):
+    def __del__(self):
         self._tmpDir.cleanup()
 
     def modify_card(self, mod: Dict[str, Any], apply_to_default: bool = False):
@@ -62,14 +60,7 @@ class Pyrthenope(object):
 
     def get_data(self, f: Path) -> DataFrame:
         data = pd.read_csv(f, delim_whitespace=True)
-
-        # Since our data using fortran double precsion we need to cast everything into np.float64
-        # On some versions of python, numpy is not able to use D as a double precision float so we change it
-        # CHECK: That all outputs are floats / ints and the replace doesnt mess anything up
-        self.logger.log(DEBUG, f"Data before mapping: \n{data}")
-        data = data.applymap(lambda x: np.float64(str(x).replace('D', 'E')))
-        self.logger.log(DEBUG, f"Data after mapping: \n{data}")
-        return data
+        return data.applymap(lambda x: np.float64(str(x).replace('D', 'E')))
 
     def run(self) -> DataFrame:
         rand_str = str(random.randint(0, 10000000000000))
