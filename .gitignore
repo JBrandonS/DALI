@@ -8,3 +8,4 @@ old/
 
 tmp_clean.sh
 *.pdf
+.VSC-jupyter.out

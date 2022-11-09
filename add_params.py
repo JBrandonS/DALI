@@ -8,8 +8,8 @@ import math
 latex_trans = {
     'omega_c_h2':r'\Omega_\mathrm{cdm}h^2', 
     'omega_b_h2':r'\Omega_b h^2', 
-    'N_eff':r'N_\mathrm{eff}',
-    'N_nu':r'N_\mathrm{eff}', # Just for the effect
+    'N_eff':r'N_\nu',
+    'N_nu':r'N_\nu', # Just for the effect
     'A_s':r'A_\mathrm{s}', 
     'n_s':r'n_\mathrm{s}', 
     'theta_s':r'\theta_\mathrm{s}',
